@@ -25,9 +25,14 @@ fetch(url)
     const temp = data.main.temp;
     const humidity = data.main.humidity;
     const windSpeed = data.wind.speed;
+    const windDeg = data.wind.deg;
     const pressure = data.main.pressure;
     const condition = data.weather[0].description;
     const icon = data.weather[0].icon;
+    const cloudiness = data.clouds.all;
+    const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
+    const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+    const rain1h = data.rain && data.rain['1h'] ? `${data.rain['1h']} mm` : 'No rain in last 1h';
 
     document.getElementById('weather').innerHTML = `
       <h2>Current Weather</h2>
@@ -35,8 +40,12 @@ fetch(url)
       <p><strong>Temperature:</strong> ${temp} °C</p>
       <p><strong>Condition:</strong> ${condition} <img src="https://openweathermap.org/img/wn/${icon}.png" alt="weather icon"></p>
       <p><strong>Humidity:</strong> ${humidity}%</p>
-      <p><strong>Wind Speed:</strong> ${windSpeed} m/s</p>
       <p><strong>Pressure:</strong> ${pressure} hPa</p>
+      <p><strong>Wind:</strong> ${windSpeed} m/s at ${windDeg}°</p>
+      <p><strong>Cloudiness:</strong> ${cloudiness}%</p>
+      <p><strong>Rain (last 1h):</strong> ${rain1h}</p>
+      <p><strong>Sunrise:</strong> ${sunrise}</p>
+      <p><strong>Sunset:</strong> ${sunset}</p>
     `;
   })
   .catch(error => {
