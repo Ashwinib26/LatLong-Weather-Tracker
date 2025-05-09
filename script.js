@@ -1,5 +1,5 @@
-const lat = 39.7596;  // Example: New Delhi latitude
-const lon = -121.6219;  // Example: New Delhi longitude
+const lat = 27.7172;  
+const lon = 85.3240; 
 
 // •	Latitude: 29.9511
 // •	Longitude: -90.0715
@@ -20,15 +20,26 @@ const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lo
 fetch(url)
   .then(response => response.json())
   .then(data => {
-    const location = data.name;
+    const city = data.name;
+    const country = data.sys.country;
     const temp = data.main.temp;
-    const desc = data.weather[0].description;
+    const humidity = data.main.humidity;
+    const windSpeed = data.wind.speed;
+    const pressure = data.main.pressure;
+    const condition = data.weather[0].description;
+    const icon = data.weather[0].icon;
 
-    document.getElementById("location").innerText = `Location: ${location}`;
-    document.getElementById("temperature").innerText = `Temperature: ${temp} °C`;
-    document.getElementById("description").innerText = `Condition: ${desc}`;
+    document.getElementById('weather').innerHTML = `
+      <h2>Current Weather</h2>
+      <p><strong>Location:</strong> ${city}, ${country}</p>
+      <p><strong>Temperature:</strong> ${temp} °C</p>
+      <p><strong>Condition:</strong> ${condition} <img src="https://openweathermap.org/img/wn/${icon}.png" alt="weather icon"></p>
+      <p><strong>Humidity:</strong> ${humidity}%</p>
+      <p><strong>Wind Speed:</strong> ${windSpeed} m/s</p>
+      <p><strong>Pressure:</strong> ${pressure} hPa</p>
+    `;
   })
   .catch(error => {
-    console.error("Error fetching weather:", error);
-    document.getElementById("weather").innerText = "Failed to load weather data.";
+    document.getElementById('weather').innerHTML = `<p>Error fetching weather data.</p>`;
+    console.error('Weather API error:', error);
   });
