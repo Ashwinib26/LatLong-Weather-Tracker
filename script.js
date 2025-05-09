@@ -1,6 +1,19 @@
-const lat = 28.6139;  // Example: New Delhi latitude
-const lon = 77.2090;  // Example: New Delhi longitude
-const apiKey = a1d5b523a69f427d4cefd2b299e01697;  // Replace with your OpenWeatherMap API key
+const lat = 39.7596;  // Example: New Delhi latitude
+const lon = -121.6219;  // Example: New Delhi longitude
+
+// •	Latitude: 29.9511
+// •	Longitude: -90.0715
+
+// •	Latitude: 5.5540
+// •	Longitude: 95.3167
+
+// •	Latitude: 27.7172
+// •	Longitude: 85.3240
+
+// •	Latitude: 39.7596
+// •	Longitude: -121.6219
+
+const apiKey = "a1d5b523a69f427d4cefd2b299e01697";  // Replace with your OpenWeatherMap API key
 
 const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
