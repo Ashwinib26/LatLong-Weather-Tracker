@@ -2,18 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Disaster Weather Report</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Report</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Weather Report</h1>
-    <div id="weather">Loading weather...</div>
+  <header>
+    <h1>🌤️ Weather Report</h1>
+  </header>
+
+  <main>
+  <div class="weather-grid">
+    <section class="weather-section">
+      <h2>📍 Location</h2>
+      <p id="location">Loading...</p>
+    </section>
+
+    <section class="weather-section">
+      <h2>🌡️ Temperature</h2>
+      <p id="temperature">Loading...</p>
+    </section>
+
+    <section class="weather-section">
+      <h2>🌤️ Condition</h2>
+      <p id="condition">Loading...</p>
+    </section>
+
+    <section class="weather-section">
+      <h2>💧 Humidity</h2>
+      <p id="humidity">Loading...</p>
+    </section>
+
+    <section class="weather-section">
+      <h2>🔵 Pressure</h2>
+      <p id="pressure">Loading...</p>
+    </section>
+
+    <section class="weather-section">
+      <h2>🌬️ Wind</h2>
+      <p id="wind">Loading...</p>
+    </section>
+
+    <section class="weather-section">
+      <h2>☁️ Cloudiness</h2>
+      <p id="cloudiness">Loading...</p>
+    </section>
+
+    <section class="weather-section">
+      <h2>🌧️ Rain (last 1h)</h2>
+      <p id="rain">Loading...</p>
+    </section>
+
+    <section class="weather-section">
+      <h2>🌅 Sunrise</h2>
+      <p id="sunrise">Loading...</p>
+    </section>
+
+    <section class="weather-section">
+      <h2>🌇 Sunset</h2>
+      <p id="sunset">Loading...</p>
+    </section>
   </div>
+</main>
 
   <script src="script.js"></script>
 </body>
