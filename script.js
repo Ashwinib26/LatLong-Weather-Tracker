@@ -13,42 +13,31 @@ const lon = 85.3240;
 // •	Latitude: 39.7596
 // •	Longitude: -121.6219
 
-const apiKey = "a1d5b523a69f427d4cefd2b299e01697";  // Replace with your OpenWeatherMap API key
+const apiKey = "a1d5b523a69f427d4cefd2b299e01697";  // Store in .env if using build tools
 
 const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
 fetch(url)
   .then(response => response.json())
   .then(data => {
-    const city = data.name;
-    const country = data.sys.country;
-    const temp = data.main.temp;
-    const humidity = data.main.humidity;
-    const windSpeed = data.wind.speed;
-    const windDeg = data.wind.deg;
-    const pressure = data.main.pressure;
-    const condition = data.weather[0].description;
-    const icon = data.weather[0].icon;
-    const cloudiness = data.clouds.all;
-    const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
-    const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
-    const rain1h = data.rain && data.rain['1h'] ? `${data.rain['1h']} mm` : 'No rain in last 1h';
-
-    document.getElementById('weather').innerHTML = `
-      <h2>Current Weather</h2>
-      <p><strong>Location:</strong> ${city}, ${country}</p>
-      <p><strong>Temperature:</strong> ${temp} °C</p>
-      <p><strong>Condition:</strong> ${condition} <img src="https://openweathermap.org/img/wn/${icon}.png" alt="weather icon"></p>
-      <p><strong>Humidity:</strong> ${humidity}%</p>
-      <p><strong>Pressure:</strong> ${pressure} hPa</p>
-      <p><strong>Wind:</strong> ${windSpeed} m/s at ${windDeg}°</p>
-      <p><strong>Cloudiness:</strong> ${cloudiness}%</p>
-      <p><strong>Rain (last 1h):</strong> ${rain1h}</p>
-      <p><strong>Sunrise:</strong> ${sunrise}</p>
-      <p><strong>Sunset:</strong> ${sunset}</p>
-    `;
+    document.getElementById('location').innerText = `${data.name}, ${data.sys.country}`;
+    document.getElementById('temperature').innerText = `${data.main.temp} °C`;
+    document.getElementById('condition').innerHTML = `${data.weather[0].description} <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="weather icon">`;
+    document.getElementById('humidity').innerText = `${data.main.humidity}%`;
+    document.getElementById('pressure').innerText = `${data.main.pressure} hPa`;
+    document.getElementById('wind').innerText = `${data.wind.speed} m/s at ${data.wind.deg}°`;
+    document.getElementById('cloudiness').innerText = `${data.clouds.all}%`;
+    document.getElementById('rain').innerText = data.rain && data.rain['1h'] ? `${data.rain['1h']} mm` : 'No rain in last 1h';
+    document.getElementById('sunrise').innerText = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
+    document.getElementById('sunset').innerText = new Date(data.sys.sunset * 1000).toLocaleTimeString();
   })
   .catch(error => {
-    document.getElementById('weather').innerHTML = `<p>Error fetching weather data.</p>`;
     console.error('Weather API error:', error);
+    const elements = [
+      'location', 'temperature', 'condition', 'humidity',
+      'pressure', 'wind', 'cloudiness', 'rain', 'sunrise', 'sunset'
+    ];
+    elements.forEach(id => {
+      document.getElementById(id).innerText = "Error loading data";
+    });
   });
