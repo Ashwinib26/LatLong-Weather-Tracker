@@ -13,11 +13,12 @@ const lon = 85.3240;
 // •	Latitude: 39.7596
 // •	Longitude: -121.6219
 
-const apiKey = "a1d5b523a69f427d4cefd2b299e01697"; 
+const apiKey = "a1d5b523a69f427d4cefd2b299e01697";
 
 function getWeather() {
   const lat = document.getElementById("latitude").value;
   const lon = document.getElementById("longitude").value;
+  const btn = document.getElementById("weather-btn");
 
   if (!lat || !lon) {
     alert("Please enter both latitude and longitude!");
@@ -30,6 +31,7 @@ function getWeather() {
     .then(response => response.json())
     .then(data => {
       document.getElementById('weather-data').style.display = 'grid';
+
       document.getElementById('location').innerText = `${data.name}, ${data.sys.country}`;
       document.getElementById('temperature').innerText = `${data.main.temp} °C`;
       document.getElementById('condition').innerHTML = `${data.weather[0].description} <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="icon">`;
@@ -40,9 +42,23 @@ function getWeather() {
       document.getElementById('rain').innerText = data.rain && data.rain['1h'] ? `${data.rain['1h']} mm` : 'No rain in last 1h';
       document.getElementById('sunrise').innerText = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
       document.getElementById('sunset').innerText = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+
+      // 🔁 Change button to Reset
+      btn.textContent = "Reset";
+      btn.onclick = resetApp;
     })
     .catch(error => {
       console.error('Weather API error:', error);
       alert("Failed to fetch weather data. Please check coordinates.");
     });
+}
+
+function resetApp() {
+  document.getElementById("latitude").value = '';
+  document.getElementById("longitude").value = '';
+  document.getElementById("weather-data").style.display = 'none';
+
+  const btn = document.getElementById("weather-btn");
+  btn.textContent = "Get Weather";
+  btn.onclick = getWeather;
 }
