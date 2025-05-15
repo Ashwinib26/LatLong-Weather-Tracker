@@ -1,6 +1,3 @@
-const lat = 27.7172;  
-const lon = 85.3240; 
-
 // •	Latitude: 29.9511
 // •	Longitude: -90.0715
 
@@ -43,7 +40,6 @@ function getWeather() {
       document.getElementById('sunrise').innerText = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
       document.getElementById('sunset').innerText = new Date(data.sys.sunset * 1000).toLocaleTimeString();
 
-      // 🔁 Change button to Reset
       btn.textContent = "Reset";
       btn.onclick = resetApp;
     })
