@@ -66,3 +66,30 @@ main {
     grid-template-columns: 1fr; /* stack on smaller screens */
   }
 }
+
+.input-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-section input {
+  padding: 10px;
+  margin: 5px;
+  width: 150px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.input-section button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #5a8dee;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.input-section button:hover {
+  background-color: #407be0;
+}

@@ -12,58 +12,25 @@
   </header>
 
   <main>
-  <div class="weather-grid">
-    <section class="weather-section">
-      <h2>📍 Location</h2>
-      <p id="location">Loading...</p>
-    </section>
+    <div class="input-section">
+      <input type="number" id="latitude" placeholder="Enter Latitude" step="any" />
+      <input type="number" id="longitude" placeholder="Enter Longitude" step="any" />
+      <button onclick="getWeather()">Get Weather</button>
+    </div>
 
-    <section class="weather-section">
-      <h2>🌡️ Temperature</h2>
-      <p id="temperature">Loading...</p>
-    </section>
-
-    <section class="weather-section">
-      <h2>🌤️ Condition</h2>
-      <p id="condition">Loading...</p>
-    </section>
-
-    <section class="weather-section">
-      <h2>💧 Humidity</h2>
-      <p id="humidity">Loading...</p>
-    </section>
-
-    <section class="weather-section">
-      <h2>🔵 Pressure</h2>
-      <p id="pressure">Loading...</p>
-    </section>
-
-    <section class="weather-section">
-      <h2>🌬️ Wind</h2>
-      <p id="wind">Loading...</p>
-    </section>
-
-    <section class="weather-section">
-      <h2>☁️ Cloudiness</h2>
-      <p id="cloudiness">Loading...</p>
-    </section>
-
-    <section class="weather-section">
-      <h2>🌧️ Rain (last 1h)</h2>
-      <p id="rain">Loading...</p>
-    </section>
-
-    <section class="weather-section">
-      <h2>🌅 Sunrise</h2>
-      <p id="sunrise">Loading...</p>
-    </section>
-
-    <section class="weather-section">
-      <h2>🌇 Sunset</h2>
-      <p id="sunset">Loading...</p>
-    </section>
-  </div>
-</main>
+    <div class="weather-grid" id="weather-data" style="display: none;">
+      <section class="weather-section"><h2>📍 Location</h2><p id="location">-</p></section>
+      <section class="weather-section"><h2>🌡️ Temperature</h2><p id="temperature">-</p></section>
+      <section class="weather-section"><h2>🌤️ Condition</h2><p id="condition">-</p></section>
+      <section class="weather-section"><h2>💧 Humidity</h2><p id="humidity">-</p></section>
+      <section class="weather-section"><h2>🔵 Pressure</h2><p id="pressure">-</p></section>
+      <section class="weather-section"><h2>🌬️ Wind</h2><p id="wind">-</p></section>
+      <section class="weather-section"><h2>☁️ Cloudiness</h2><p id="cloudiness">-</p></section>
+      <section class="weather-section"><h2>🌧️ Rain (last 1h)</h2><p id="rain">-</p></section>
+      <section class="weather-section"><h2>🌅 Sunrise</h2><p id="sunrise">-</p></section>
+      <section class="weather-section"><h2>🌇 Sunset</h2><p id="sunset">-</p></section>
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
